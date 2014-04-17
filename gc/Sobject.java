@@ -311,7 +311,8 @@ public class Sobject extends IdObject implements Lockable, Cloneable {
 		try {
 			Locker.start(this);
 			assert !deleted;
-			setCollector(collector.update());
+			if(collector != null)
+				setCollector(collector.update());
 			//setCollector(t);
 			assert Here.here("rebuild:" + this);
 			if (count[which.value] > 0) {
